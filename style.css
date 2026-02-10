@@ -1143,3 +1143,14 @@ body.request-page {
         display: none;
     }
 }
+
+@media (max-width: 768px) {
+    .logo {
+        max-width: 70vw;  /* Increased from 50vw */
+    }
+    
+    h1 {
+        font-size: 1.2em;
+        margin-top: 15px;  /* Add this */
+    }
+}
