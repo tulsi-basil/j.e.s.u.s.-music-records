@@ -20,7 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
         shirt: 150,
         pants: 200,
         hat: 50,
-        shoes: 100
+        shoes: 100,
+        vest: 140,
+        boots: 110
     };
     
     // Style switching functionality
@@ -50,20 +52,39 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (style === 'gorp-core') {
             items = [
+                // Jackets
                 { file: 'jacket1.png', type: 'short_jacket' },
-                { file: 'jacket4.png', type: 'long_jacket' },
                 { file: 'jacket3.png', type: 'short_jacket' },
+                { file: 'jacket4.png', type: 'long_jacket' },
+                { file: 'blue jacket.png', type: 'long_jacket' },
+                { file: 'blue jacket 2.png', type: 'long_jacket' },
+                { file: 'blue and green jacket.png', type: 'long_jacket' },
+                { file: 'pale jacket.png', type: 'long_jacket' },
+                // Vests
+                { file: 'puffer vest.png', type: 'vest' },
+                { file: 'hunting vest.png', type: 'vest' },
+                // Shirts
                 { file: 'shirt1.png', type: 'shirt' },
+                // Pants
                 { file: 'pants1.png', type: 'pants' },
                 { file: 'pants2.png', type: 'pants' },
+                { file: 'pale pants.png', type: 'pants' },
+                { file: 'pale pants 2.png', type: 'pants' },
+                { file: 'tactical pants.png', type: 'pants' },
+                // Shoes
                 { file: 'salomon1.png', type: 'shoes' },
                 { file: 'salomon2.png', type: 'shoes' },
                 { file: 'salomon3.png', type: 'shoes' }
             ];
         } else if (style === 'e-girl') {
             items = [
-                // Add your e-girl clothing items here
-                // { file: 'egirl-item1.png', type: 'shirt' },
+                // Pants
+                { file: 'e-girl pants 4.png', type: 'pants' },
+                { file: 'e-girl pants 5.png', type: 'pants' },
+                // Shoes/Boots
+                { file: 'e-girl boots 1.png', type: 'boots' },
+                { file: 'e-girl shoes 1.png', type: 'shoes' },
+                { file: 'e-girl shoes 2.png', type: 'shoes' }
             ];
         } else if (style === 'polish') {
             items = [

@@ -753,11 +753,11 @@ body.dance-mode .turntable-container {
 
 #jesus-body {
     display: block;
-    max-width: 180px;
+    max-width: 150px;  /* Changed from 180px */
     height: auto;
     image-rendering: pixelated;
     position: relative;
-    z-index: 1;  /* Add this - puts Jesus in the back */
+    z-index: 1;
 }
 
 .clothing-rack {
