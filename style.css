@@ -345,13 +345,15 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: -40px 0;
+    margin: -40px 0;  /* revert to original */
+    position: relative;
+    top: -40px;  /* adjust this value to move just the turntable up */
 }
 
 .turntable-container {
     position: relative;
     width: 500px;
-    height: 500px;
+    height: 560px;
 }
 
 .turntable-base {
@@ -363,11 +365,11 @@ footer {
 
 .record-container {
     position: absolute;
-    top: 37%;  /* Changed from 40% - moves it up */
+    top: 38%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 130px;  /* Changed from 150px - makes it smaller */
-    height: 130px;  /* Changed from 150px - makes it smaller */
+    width: 180px;
+    height: 180px;
 }
 
 .album-art {
@@ -389,7 +391,7 @@ footer {
 
 .track-info {
     position: absolute;
-    top: 55%;
+    top: 58%;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
@@ -400,7 +402,7 @@ footer {
 
 .player-controls {
     position: absolute;
-    top: 70%;
+    top: 73%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -457,7 +459,7 @@ footer {
 
 .progress-wrapper {
     position: absolute;
-    bottom: 33%;
+    bottom: 30%;
     left: 50%;
     transform: translateX(-50%);
     width: 80%;

@@ -8,13 +8,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (!jesus) return;
     
-    // Mobile detection and speed adjustments
-    const isMobile = window.innerWidth <= 768;
+    // Dynamic mobile detection - re-evaluated on each restart
+    function getIsMobile() {
+        return window.innerWidth <= 768;
+    }
+
+    // Dynamic chaser speed - re-evaluated on each restart
+    function getChaserSpeed() {
+        return window.innerWidth <= 768 ? 0.75 : 1;
+    }
     
     let jesusX = window.innerWidth / 2;
     let jesusY = window.innerHeight / 2;
     const moveSpeed = 3;
-    const chaserSpeed = isMobile ? 0.75 : 1; // Changed from 0.6 to 0.75 on mobile
     let gameOver = false;
     let audioStarted = false;
     
@@ -22,7 +28,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let startTime = null;
     let timerInterval = null;
     let currentTime = 0;
-    let highScore = localStorage.getItem('runJesusHighScore') || 0;
+    let highScore = parseFloat(localStorage.getItem('runJesusHighScore')) || 0;
+    // Sanity check - if stored value is unreasonably large, reset it
+    if (highScore > 99999) highScore = 0;
     
     // Display initial high score
     highScoreDisplay.textContent = formatTime(highScore);
@@ -85,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
             x, 
             y,
             wanderAngle: Math.random() * Math.PI * 2,
-            wanderSpeed: isMobile ? 0.02 : 0.05  // Less wandering on mobile
+            wanderSpeed: getIsMobile() ? 0.02 : 0.05
         });
         chaser.style.left = x + 'px';
         chaser.style.top = y + 'px';
@@ -150,19 +158,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Create falling crosses
     function createCrossRain() {
+        const isMobile = getIsMobile();
         gameOver = true;
         stopTimer();
         
         const crosses = [];
-        const numCrosses = isMobile ? 100 : 200; // Fewer crosses on mobile
-        const crossSpeed = isMobile ? 15 : 2; // Much faster base speed on mobile
+        const numCrosses = isMobile ? 100 : 200;
+        // Scale cross speed with window size to avoid too-fast crosses on small screens
+        const crossSpeed = isMobile ? Math.min(8, window.innerWidth / 60) : 2;
         
         for(let i = 0; i < numCrosses; i++) {
             const cross = document.createElement('img');
             cross.src = 'cross.png';
             cross.className = 'falling-cross';
             cross.style.position = 'fixed';
-            cross.style.width = isMobile ? '50px' : '100px'; // Smaller on mobile
+            cross.style.width = isMobile ? '50px' : '100px';
             cross.style.height = 'auto';
             cross.style.left = (Math.random() * (window.innerWidth + 200)) - 100 + 'px';
             cross.style.top = '-200px';
@@ -174,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 element: cross,
                 x: parseFloat(cross.style.left),
                 y: -200,
-                speed: crossSpeed + Math.random() * (isMobile ? 10 : 4) // Bigger random range on mobile
+                speed: crossSpeed + Math.random() * (isMobile ? 4 : 4)
             });
         }
         
@@ -205,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Reset the game
     function resetGame() {
+        const isMobile = getIsMobile();
         gameOver = false;
         startTime = null;
         currentTime = 0;
@@ -230,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 x, 
                 y,
                 wanderAngle: Math.random() * Math.PI * 2,
-                wanderSpeed: isMobile ? 0.02 : 0.05  // Less wandering on mobile
+                wanderSpeed: isMobile ? 0.02 : 0.05
             };
             chaser.style.left = x + 'px';
             chaser.style.top = y + 'px';
@@ -280,13 +291,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 pos.wanderAngle += (Math.random() - 0.5) * pos.wanderSpeed;
                 
                 // Calculate wander offset using smooth angle
-                const wanderStrength = isMobile ? 0.2 : 0.5;  // Less wander on mobile
+                const wanderStrength = getIsMobile() ? 0.2 : 0.5;
                 const wanderX = Math.cos(pos.wanderAngle) * wanderStrength;
                 const wanderY = Math.sin(pos.wanderAngle) * wanderStrength;
                 
                 // Combine chasing direction with smooth wandering
-                pos.x += (dx / distance) * chaserSpeed + wanderX;
-                pos.y += (dy / distance) * chaserSpeed + wanderY;
+                pos.x += (dx / distance) * getChaserSpeed() + wanderX;
+                pos.y += (dy / distance) * getChaserSpeed() + wanderY;
                 
                 // Keep chasers within viewport bounds
                 pos.x = Math.max(0, Math.min(pos.x, window.innerWidth - 50));

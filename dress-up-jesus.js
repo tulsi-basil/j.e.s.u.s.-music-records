@@ -50,12 +50,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function loadClothingForStyle(style) {
         let items = [];
         
-        if (style === 'gorp-core') {
+         if (style === 'gorp-core') {
             items = [
                 // Jackets
-                { file: 'jacket1.png', type: 'short_jacket' },
-                { file: 'jacket3.png', type: 'short_jacket' },
-                { file: 'jacket4.png', type: 'long_jacket' },
+                { file: 'jacket6.png', type: 'short_jacket' },
+                { file: 'jacket 7.png', type: 'long_jacket' },
                 { file: 'blue jacket.png', type: 'long_jacket' },
                 { file: 'blue jacket 2.png', type: 'long_jacket' },
                 { file: 'blue and green jacket.png', type: 'long_jacket' },
@@ -63,11 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Vests
                 { file: 'puffer vest.png', type: 'vest' },
                 { file: 'hunting vest.png', type: 'vest' },
-                // Shirts
-                { file: 'shirt1.png', type: 'shirt' },
                 // Pants
-                { file: 'pants1.png', type: 'pants' },
-                { file: 'pants2.png', type: 'pants' },
                 { file: 'pale pants.png', type: 'pants' },
                 { file: 'pale pants 2.png', type: 'pants' },
                 { file: 'tactical pants.png', type: 'pants' },
@@ -78,7 +73,15 @@ document.addEventListener('DOMContentLoaded', function() {
             ];
         } else if (style === 'e-girl') {
             items = [
+                // Shirts/Tops
+                { file: 'e-girl shirt 1.png', type: 'shirt' },
+                { file: 'e-girl shirt 2.png', type: 'shirt' },
+                { file: 'e-girl shirt 3.png', type: 'shirt' },
+                { file: 'e-girl shirt 4.png', type: 'shirt' },
+                { file: 'e-girl sweatshirt 1.png', type: 'long_jacket' },
                 // Pants
+                { file: 'e-girl pants 2.png', type: 'pants' },
+                { file: 'e-girl pants 3.png', type: 'pants' },
                 { file: 'e-girl pants 4.png', type: 'pants' },
                 { file: 'e-girl pants 5.png', type: 'pants' },
                 // Shoes/Boots
@@ -88,8 +91,15 @@ document.addEventListener('DOMContentLoaded', function() {
             ];
         } else if (style === 'polish') {
             items = [
-                // Add your 17th century polish clothing items here
-                // { file: 'polish-item1.png', type: 'jacket' },
+                // Shirts/Tops
+                { file: 'polish shirt 1.png', type: 'shirt' },
+                { file: 'polish shirt 2.png', type: 'shirt' },
+                // Dresses/Robes
+                { file: 'polish dress 1.png', type: 'long_jacket' },
+                { file: 'polish dress 2.png', type: 'long_jacket' },
+                { file: 'polish dress 3.png', type: 'long_jacket' },
+                { file: 'polish dress 4.png', type: 'long_jacket' },
+                { file: 'polish dress 5.png', type: 'long_jacket' }
             ];
         }
         

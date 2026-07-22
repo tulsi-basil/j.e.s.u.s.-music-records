@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J.E.S.U.S. Music Records - You Found Me</title>
     <link rel="icon" type="image/x-icon" href="menorah-still.ico">
-    <!-- <link rel="stylesheet" href="style.css"> -->
     <style>
         @font-face {
             font-family: 'Aldrich';
@@ -41,17 +40,16 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0;  /* Set to 0 and use margin instead */
+            gap: 0;
             margin-top: 15vh;
         }
-
 
         .video-wrapper {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0px;
-            margin-top: -90px;  /* Add this */
+            margin-top: -90px;
         }
 
         .side-gif {
@@ -62,6 +60,12 @@
 
         .side-gif.hidden {
             visibility: hidden;
+        }
+
+        /* Hide top/bottom gifs on desktop */
+        .top-gif,
+        .bottom-gif {
+            display: none;
         }
 
         .video-container {
@@ -75,19 +79,81 @@
             height: 315px;
             border: 3px solid #000;
         }
+
+        /* Mobile styles */
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto;
+            }
+
+            h2 {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+
+            .content-wrapper {
+                margin-top: 5vh;
+                gap: 20px;
+            }
+
+            .video-wrapper {
+                flex-direction: column;
+                gap: 0;
+                margin-top: 0;
+            }
+
+            /* Hide side gifs on mobile */
+            .side-gif {
+                display: none !important;
+            }
+
+            /* Show top/bottom gifs on mobile */
+            .top-gif,
+            .bottom-gif {
+                display: block;
+                width: 125px;  /* Change this from 250px to 125px */
+                height: auto;
+            }
+
+            .top-gif.hidden,
+            .bottom-gif.hidden {
+                visibility: hidden;
+            }
+
+            .video-container {
+                width: 90vw;
+                max-width: 400px;
+                height: auto;
+            }
+
+            .video-container iframe {
+                width: 100%;
+                height: calc(90vw * 9 / 16);
+                max-height: 225px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="content-wrapper">
         <h2>You Found Me by The Fray</h2>
         
+        <!-- Top gif for mobile only -->
+        <img src="full you found me 1 (online-video-cutter.com).gif" alt="Top decoration" class="top-gif hidden" id="topGif">
+        
         <div class="video-wrapper">
+            <!-- Side gifs for desktop only -->
             <img src="full you found me 1 (online-video-cutter.com).gif" alt="Side decoration" class="side-gif hidden" id="leftGif">
+            
             <div class="video-container">
                 <iframe id="youtubeVideo" src="https://www.youtube.com/embed/jFg_8u87zT0?enablejsapi=1" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
             </div>
+            
             <img src="full you found me 1 (online-video-cutter.com).gif" alt="Side decoration" class="side-gif hidden" id="rightGif">
         </div>
+
+        <!-- Bottom gif for mobile only -->
+        <img src="full you found me 1 (online-video-cutter.com).gif" alt="Bottom decoration" class="bottom-gif hidden" id="bottomGif">
     </div>
 
     <script>
@@ -115,28 +181,47 @@
             console.log('Player state changed:', event.data);
             const leftGif = document.getElementById('leftGif');
             const rightGif = document.getElementById('rightGif');
+            const topGif = document.getElementById('topGif');
+            const bottomGif = document.getElementById('bottomGif');
             
             // YT.PlayerState.PLAYING = 1
             if (event.data == 1) {
                 console.log('Video playing - showing gifs');
+                // Desktop gifs
                 leftGif.classList.remove('hidden');
                 rightGif.classList.remove('hidden');
+                // Mobile gifs
+                topGif.classList.remove('hidden');
+                bottomGif.classList.remove('hidden');
                 
-                // Reload gifs to restart animation
-                const leftSrc = leftGif.src;
-                const rightSrc = rightGif.src;
-                leftGif.src = '';
-                rightGif.src = '';
+                // Reload all gifs to restart animation
+                const gifs = [
+                    { el: leftGif, src: leftGif.src },
+                    { el: rightGif, src: rightGif.src },
+                    { el: topGif, src: topGif.src },
+                    { el: bottomGif, src: bottomGif.src }
+                ];
+                
+                gifs.forEach(gif => {
+                    gif.el.src = '';
+                });
+                
                 setTimeout(() => {
-                    leftGif.src = leftSrc;
-                    rightGif.src = rightSrc;
+                    gifs.forEach(gif => {
+                        gif.el.src = gif.src;
+                    });
                 }, 10);
             } else {
                 console.log('Video paused/stopped - hiding gifs');
                 leftGif.classList.add('hidden');
                 rightGif.classList.add('hidden');
+                topGif.classList.add('hidden');
+                bottomGif.classList.add('hidden');
             }
         }
     </script>
+    <!-- GoatCounter analytics -->
+    <script data-goatcounter="https://sslate.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

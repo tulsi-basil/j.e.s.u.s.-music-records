@@ -4,12 +4,6 @@ window.addEventListener('load', function() {
     console.log('J.E.S.U.S. Music Records site loaded!');
 });
 
-if (window.innerWidth <= 768) {
-    window.addEventListener('load', function() {
-        alert('We here at J.E.S.U.S. Music Records believe in mobile-last development. You might want to use a desktop computer, ideally an iMac G4.');
-    });
-}
-
 // Add some retro interactivity
 document.addEventListener('DOMContentLoaded', function() {
     // Smooth scroll for navigation links
@@ -136,7 +130,7 @@ const totalTimeDisplay = document.getElementById('totalTime');
 const playlist = [
     { 
         audio: 'WWJS - KLEZTRONICA TUNNEL VERSION 1 copy.mp3', 
-        cover: 'placeholder-cover-art.png',
+        cover: 'wwjs kleztronica full blue solid cd 2.png',
         title: 'WWJS - KLEZTRONICA TUNNEL 770 VERSION',
         artists: ['Diva Nigun', 'Mikhl Yashinsky'],  // Array of artists
         lyricsFile: 'wwjs-lyrics.txt',
@@ -147,7 +141,7 @@ const playlist = [
             { startTime: 136, duration: 33 }
         ],
         danceModes: [
-            { startTime: 169, endTime: 200 }
+            { startTime: 168, endTime: 200 }
         ],
         danceBackground: 'jesusflashing.gif'
     },
@@ -165,6 +159,32 @@ const playlist = [
         ],
         danceBackground: 'jesusgif2.gif'
     },
+    {
+        audio: 'roses are red 2 louder.mp3',
+        cover: 'placeholder-cover-art.png',
+        title: 'Shoutout to Mr. Cohen',
+        artists: ['Diva Nigun'],
+        lyricsFile: '',
+        lyricsDisplay: 'scrolling',
+        lyricsStartTime: 0,
+        lyricsEndTime: 150,
+        danceModes: [
+            { startTime: 18, endTime: 47.75}
+        ],
+        danceBackground: 'jesusgif4.gif'
+    },
+    {
+        audio: 'marni great grandparent melody instagram mastered 2 clipped.mp3',
+        cover: 'placeholder-cover-art.png',
+        title: 'My Great Grandfather’s Kedusha',
+        artists: ['Diva Nigun', 'Marni Loffman'],
+        lyricsFile: '',
+        lyricsDisplay: 'scrolling',
+        lyricsStartTime: 0,
+        lyricsEndTime: 150,
+        danceModes: [],
+        danceBackground: 'jesusgif5.gif'
+    }
 ];
 
 let currentTrack = 0;

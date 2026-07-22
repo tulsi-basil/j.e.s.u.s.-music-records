@@ -36,7 +36,7 @@
             transition: all 1s ease-out;
         }
 
-        /* Shuffled layout with varying sizes, minimal overlap */
+        /* Desktop layout - Shuffled layout with varying sizes, minimal overlap */
         .mary-gif:nth-child(1) { width: 28%; top: 0%; left: 0%; z-index: 2; }
         .mary-gif:nth-child(2) { width: 22%; top: 0%; left: 26%; z-index: 1; }
         .mary-gif:nth-child(3) { width: 20%; top: 0%; left: 46%; z-index: 3; }
@@ -71,14 +71,14 @@
         .mary-gif:nth-child(27) { width: 17%; top: 65%; left: 12%; z-index: 4; }
         .mary-gif:nth-child(28) { width: 15%; top: 90%; left: 58%; z-index: 4; }
 
-         /* Music marquee */
+        /* Music marquee */
         .music-marquee {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: transparent;  /* Changed from rgba(0, 0, 0, 0.8) */
-            color: black;  /* Changed from white */
+            background-color: transparent;
+            color: black;
             font-family: Arial, sans-serif;
             font-size: 14px;
             padding: 5px 0;
@@ -89,6 +89,50 @@
         .music-marquee.show {
             display: block;
         }
+
+        /* Mobile layout - tighter grid with more coverage */
+        @media (max-width: 768px) {
+            /* Row 1 */
+            .mary-gif:nth-child(1) { width: 35%; top: 0%; left: 0%; }
+            .mary-gif:nth-child(2) { width: 32%; top: 0%; left: 33%; }
+            .mary-gif:nth-child(3) { width: 35%; top: 0%; left: 65%; }
+            
+            /* Row 2 */
+            .mary-gif:nth-child(4) { width: 33%; top: 16%; left: 0%; }
+            .mary-gif:nth-child(5) { width: 34%; top: 16%; left: 32%; }
+            .mary-gif:nth-child(6) { width: 35%; top: 16%; left: 65%; }
+            
+            /* Row 3 */
+            .mary-gif:nth-child(7) { width: 36%; top: 32%; left: 0%; }
+            .mary-gif:nth-child(8) { width: 32%; top: 32%; left: 34%; }
+            .mary-gif:nth-child(9) { width: 34%; top: 32%; left: 66%; }
+            
+            /* Row 4 */
+            .mary-gif:nth-child(10) { width: 34%; top: 48%; left: 0%; }
+            .mary-gif:nth-child(11) { width: 35%; top: 48%; left: 33%; }
+            .mary-gif:nth-child(12) { width: 33%; top: 48%; left: 67%; }
+            
+            /* Row 5 */
+            .mary-gif:nth-child(13) { width: 33%; top: 64%; left: 0%; }
+            .mary-gif:nth-child(14) { width: 36%; top: 64%; left: 32%; }
+            .mary-gif:nth-child(15) { width: 33%; top: 64%; left: 67%; }
+            
+            /* Row 6 */
+            .mary-gif:nth-child(16) { width: 35%; top: 80%; left: 0%; }
+            .mary-gif:nth-child(17) { width: 32%; top: 80%; left: 34%; }
+            .mary-gif:nth-child(18) { width: 34%; top: 80%; left: 66%; }
+            
+            /* Fill gaps */
+            .mary-gif:nth-child(19) { width: 28%; top: 8%; left: 36%; z-index: 4; }
+            .mary-gif:nth-child(20) { width: 26%; top: 24%; left: 10%; z-index: 4; }
+            .mary-gif:nth-child(21) { width: 27%; top: 40%; left: 70%; z-index: 4; }
+            .mary-gif:nth-child(22) { width: 28%; top: 56%; left: 5%; z-index: 4; }
+            .mary-gif:nth-child(23) { width: 26%; top: 72%; left: 40%; z-index: 4; }
+            .mary-gif:nth-child(24) { width: 27%; top: 88%; left: 15%; z-index: 4; }
+            .mary-gif:nth-child(25) { width: 25%; top: 12%; left: 5%; z-index: 4; }
+            .mary-gif:nth-child(26) { width: 26%; top: 28%; left: 72%; z-index: 4; }
+            .mary-gif:nth-child(27) { width: 27%; top: 44%; left: 35%; z-index: 4; }
+            .mary-gif:nth-child(28) { width: 25%; top: 60%; left: 68%; z-index: 4; }
         }
     </style>
 </head>
@@ -208,5 +252,8 @@
             }
         });
     </script>
+    <!-- GoatCounter analytics -->
+    <script data-goatcounter="https://sslate.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
